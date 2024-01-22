@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Inclua a folha de estilos do Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Sua folha de estilos personalizada, se necessário -->
+    <link rel="stylesheet" href="style.css">
+    <title>Página de Teste</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="display-4">Hello Kaio</h1>
+        <p class="lead">This is an <strong>index.html</strong> file on Node.js server on MachineAzure.</p>
+
+        <!-- Formulário para adicionar nomes -->
+        <form id="addNameForm">
+            <div class="form-group">
+                <label for="nameToAdd">Name to Add</label>
+                <input type="text" class="form-control" id="nameToAdd" placeholder="Enter name">
+            </div>
+            <button type="submit" class="btn btn-success">Add Name</button>
+        </form>
+
+        <!-- Formulário para excluir nomes -->
+        <form id="deleteNameForm">
+            <div class="form-group">
+                <label for="nameToDelete">Name to Delete</label>
+                <input type="text" class="form-control" id="nameToDelete" placeholder="Enter name">
+            </div>
+            <button type="submit" class="btn btn-danger">Delete Name</button>
+        </form>
+
+        <!-- Tabela do Bootstrap -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody id="nameTableBody">
+                <!-- A tabela será preenchida dinamicamente com os nomes -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Inclua os scripts do Bootstrap e do jQuery (necessário para alguns recursos do Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script><!-- Inclua o script do jQuery (versão completa) diretamente do CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Script para manipular a adição e exclusão de nomes -->
+    <!-- Script para manipular a adição e exclusão de nomes -->
+<script>
+    $(document).ready(function() {
+        // Manipular a adição de nomes
+        $('#addNameForm').submit(function(event) {
+            // ... (seu código para adicionar nomes)
+        });
+
+        // Manipular a exclusão de nomes
+        $('#deleteNameForm').submit(function(event) {
+            // ... (seu código para excluir nomes)
+        });
+
+        // Carregar a tabela com os nomes ao carregar a página e após adição/exclusão
+        function loadNames() {
+            $.get('/getNames', function(data) {
+                const nameTableBody = $('#nameTableBody');
+                nameTableBody.empty();
+
+                data.forEach(function(name, index) {
+                    nameTableBody.append(`<tr><th scope="row">${index + 1}</th><td>${name}</td></tr>`);
+                });
+            });
+        }
+
+        // Carregar a tabela com os nomes ao carregar a página
+        loadNames();
+    });
+</script>
+
+    </script>
+</body>
+</html>
